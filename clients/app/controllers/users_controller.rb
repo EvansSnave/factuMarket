@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def getAll
+    render json: User.all
+  end
+
+  def getUser 
+    render json: User.find(params[:id])
+  end
+
   private
 
   def user_params
