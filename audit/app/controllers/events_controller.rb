@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     event = Event.new(event_params)
 
     if event.save
-      render json: { message: "Event stored", event: event }, status: :created
+      render json: { message: "Evento registrado", event: event }, status: :created
     else
       render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
     end
