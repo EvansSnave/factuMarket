@@ -1,0 +1,9 @@
+<%= form_with url: "/", method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :search_id, "ID de la factura" %>
+    <%= f.number_field :search_id %>
+  </div>
+  <div>
+    <%= f.submit "Buscar factura" %>
+  </div>
+<% end %>

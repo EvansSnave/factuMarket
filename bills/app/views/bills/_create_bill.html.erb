@@ -1,0 +1,30 @@
+<%= form_with url: "/facturas", method: :post, model: @bill, local: true do |f| %>
+  <div>
+    <%= f.label :user_id, "ID del usuario" %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Descripcion" %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :amount, "Cantidad" %>
+    <%= f.number_field :amount %>
+  </div>
+
+  <div>
+    <%= f.label :product, "Producto" %>
+    <%= f.text_field :product %>
+  </div>
+
+  <div>
+    <%= f.label :bill_date, "Fecha" %>
+    <%= f.date_field :bill_date %>
+  </div>
+
+  <div>
+    <%= f.submit "Crear factura" %>
+  </div>
+<% end %>

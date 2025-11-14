@@ -1,0 +1,15 @@
+<h1>Gestion informacion de facturas</h1>
+<h2>Esquema de factura:</h2>
+<pre><code>
+  bill: {
+    user_id: integer,
+    description: string,
+    amount: integer,
+    product: string,
+    bill_date: string
+  }
+</code></pre>
+
+<%= render "get_bills_by_range" %>
+<%= render "create_bill", bill: @bill %>
+<%= render "get_bill_by_id" %>
