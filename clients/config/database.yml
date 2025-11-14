@@ -4,7 +4,7 @@ default: &default
   password: 122
   host: localhost
   port: 1521
-  database: FREE  # ← service name from Oracle Free AI
+  database: FREE
 
 development:
   <<: *default
