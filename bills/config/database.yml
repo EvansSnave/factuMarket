@@ -1,0 +1,16 @@
+default: &default
+  adapter: oracle_enhanced
+  username: C##bills
+  password: 122
+  host: localhost
+  port: 1521
+  database: FREE
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
