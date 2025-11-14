@@ -18,6 +18,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "ruby-oci8"
 gem "activerecord-oracle_enhanced-adapter", "~> 8.0.0"
+# Gemfile
+gem 'bcrypt', '~> 3.1'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
