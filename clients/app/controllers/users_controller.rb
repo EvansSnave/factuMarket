@@ -1,71 +1,51 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
+  def home
+    @routes = client_routes
+    @user = User.new
+
+    if params[:commit] == "Crear usuario"
+      @user = UserService.create_user(user_params)
+    end
+
+    if params[:search_id].present?
+      @requestedUser = UserService.get_user_by_id(params[:search_id])
+    end
+  end
+
   # POST /clientes
   def create
-    user = User.new(user_params)
+    user = UserService.create_user(user_params)
 
-    if user.save
-      send_audit_event(
-        type: "CLIENTE_CREADO",
-        entity_id: user.id,
-        description: "Un cliente fue creado",
-        payload: user.as_json
-      )
-
+    if user.persisted?
       render json: { message: "Cliente creado", user: user }, status: :created
     else
-      send_audit_event(
-        type: "CLIENTE_CREADO_ERROR",
-        entity_id: 0,
-        description: "Hubo un error al crear el cliente Error: #{user.errors.full_messages}",
-        payload: {}
-      )
       render json: { errors: "Hubo un error al crear el cliente Error: #{user.errors.full_messages}" }, status: :unprocessable_entity
     end
   end
 
   def getAll
-    send_audit_event(
-      type: "PETICION_CLIENTE",
-      entity_id: 0,
-      description: "Se enviaron todos los clientes",
-      payload: User.all.as_json
-    )
+    users = UserService.get_all_users
 
-    render json: User.all
+    render json: users
   end
 
   def getUser 
     id = params[:id]
-    user = User.find_by(id: id) 
+    user = UserService.get_user_by_id(id)
     if user.present?
-      send_audit_event(
-        type: "PETICION_CLIENTE",
-        entity_id: user.id,
-        description: "Se envio el cliente con id #{user.id}",
-        payload: user.as_json
-      )
 
       render json: user
     else
-      send_audit_event(
-        type: "PETICION_CLIENTE_ERROR",
-        entity_id: 0,
-        description: "El cliente con id #{id} no existe",
-        payload: {}
-      )
 
       render json: { errors: "El cliente con id #{id} no existe" }, status: :unprocessable_entity
     end
-
   end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :identification)
-  end
-
-  def send_audit_event(data)
-    AuditClient.send_event(data)
   end
 end

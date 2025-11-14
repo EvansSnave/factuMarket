@@ -1,5 +1,5 @@
 class BillsController < ApplicationController
-   def index
+  def index
     start_date = params[:fechaInicio]
     end_date = params[:fechaFin]
 

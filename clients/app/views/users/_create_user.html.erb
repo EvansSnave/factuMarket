@@ -1,0 +1,30 @@
+<%= form_with url: "/clientes", method: :post, model: @user, local: true do |f| %>
+  <div>
+    <%= f.label :name, "Nombre" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :identification, "Identificación" %>
+    <%= f.number_field :identification %>
+  </div>
+
+  <div>
+    <%= f.label :password, "Contraseña" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, "Confirmar contraseña" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.submit "Crear usuario" %>
+  </div>
+<% end %>
