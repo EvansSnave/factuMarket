@@ -1,5 +1,7 @@
 # ✨FactuMarket S.A✨
 
+<img width="1325" height="476" alt="image" src="https://github.com/user-attachments/assets/2e8b1d51-f7eb-40ee-abb1-da16faed19b6" />
+
 ## Programas necesarios
 
 - Rails version 8.0♦️
@@ -171,7 +173,7 @@ Este microservicio se encarga de manejar la entidad "Evento" (Event en codigo) S
 error en cualquiera de estas acciones, un evento es almacenado en MongoDB
 La entidad principal aqui es **Event** la cual representa un evento. Este es el esquema de la entidad Event:
 ```
-bill: {
+event: {
   entity_id: integer,
   service: string,
   type: string,
@@ -181,7 +183,7 @@ bill: {
 ```
 
 Para que un evento sea valido, el ID del cliente debe existir en la base de datos del microservicio de clientes y la cantidad debe ser mayor a 0\
-El puerto en donde este microservicio corre es ```3002``` asi que la url base de es ```http://[::1]:3002```\
+El puerto en donde este microservicio corre es ```3001``` asi que la url base de es ```http://[::1]:3001```\
 
 ***Endpoints***🥇
 
@@ -191,7 +193,7 @@ POST /auditoria
 ```
 Este podira ser un evento para este endpoint
 ```
-bill: {
+event {
   entity_id: 0,
   service: "bills-microservice",
   type: "FACTURA_CREADA,
@@ -216,4 +218,5 @@ GET /auditoria/:id
 ```
 Este endpoint devuelve una lista de todos los eventos relacionados a la factura con id=:id\
 De esta manera: ```http://[::1]:3001/auditoria/1``` nos dara como resultado todos los eventos relacionados a la factura con id=1\
+
 
