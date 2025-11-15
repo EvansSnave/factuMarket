@@ -2,17 +2,15 @@ require "net/http"
 require "uri"
 require "json"
 
-class ClientsClient
-  CLIENTS_URL = "http://localhost:3000/clientes"
+class BillsClient
+  BILLS_URL = "http://localhost:3002/facturas"
 
-  def self.get_user(id)
-    uri = URI("#{CLIENTS_URL}/#{id}")
+  def self.get_bill(id)
+    uri = URI("#{BILLS_URL}/#{id}")
     response = Net::HTTP.get_response(uri)
 
     if response.is_a?(Net::HTTPSuccess)
       body = response.body
-
-      # Try to parse JSON, but if it's invalid, return nil (user not found)
       begin
         data = JSON.parse(body)
       rescue JSON::ParserError
@@ -32,12 +30,12 @@ class ClientsClient
     elsif response.is_a?(Net::HTTPNotFound)
       return nil
     else
-      Rails.logger.error "Error consultando usuario #{id}: #{response.code}"
+      Rails.logger.error "Error consultando factura #{id}: #{response.code}"
       return nil
     end
   end
 
-  def self.user_exists?(id)
-    !!get_user(id)
+  def self.bill_exists?(id)
+    !!get_bill(id)
   end
 end

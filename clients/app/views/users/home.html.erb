@@ -1,0 +1,30 @@
+<h1>Gestion informacion de clientes</h1>
+<h2>Esquema de cliente:</h2>
+<pre><code>
+  user: {
+    name: string,
+    email: string (unico),
+    password: string,
+    password_confirmation: string,
+    identificacion: integer
+  }
+</code></pre>
+<ul>
+  <% @routes.each do |route| %>
+    <li>
+      <p>Metodo HTTP: <%= route[:method] %></p>
+      <p>Endpoint: <%= route[:endpoint] %></p>
+      <p><%= route[:description] %></p>
+    </li>
+  <% end %>
+</ul>
+<%= render "create_user", user: @user%>
+<% if flash[:success] %>
+  <div style="color: green; font-weight: bold;"><%= flash[:success] %></div>
+<% end %>
+
+<% if flash[:error] %>
+  <div style="color: red; font-weight: bold;"><%= flash[:error] %></div>
+<% end %>
+<%= render "get_all_users" %>
+<%= render "get_user_by_id" %>

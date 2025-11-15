@@ -1,0 +1,29 @@
+<%= form_with url: "/", method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :fechaInicio, "Desde" %>
+    <%= f.date_field :fechaInicio %>
+  </div>
+  <div>
+    <%= f.label :fechaFin, "Hasta" %>
+    <%= f.date_field :fechaFin %>
+  </div>
+
+  <div>
+    <%= f.submit "Buscar facturas" %>
+  </div>
+<% end %>
+<% if defined?(@bills) && @bills.present? %>
+  <h3>Facturas: </h3>
+  <ul>
+    <% @bills.each do |bill| %>
+      <ul>
+        <li>ID: <%= bill.id %></li>
+        <li>ID cliente: <%= bill.user_id %></li> 
+        <li>Descripcion: <%= bill.description %></li> 
+        <li>Cantidad: <%= bill.amount %></li>
+        <li>Producto: <%= bill.product %></li>
+        <li>Fecha: <%= bill.bill_date %></li>
+        </ul>
+    <% end %>
+  </ul>
+<% end %>

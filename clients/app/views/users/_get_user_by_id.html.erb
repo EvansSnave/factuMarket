@@ -1,0 +1,20 @@
+<%= form_with url: "/", method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :search_id, "ID del usuario" %>
+    <%= f.number_field :search_id %>
+  </div>
+  <div>
+    <%= f.submit "Buscar usuario" %>
+  </div>
+<% end %>
+<% if defined?(@requestedUser) && @requestedUser.present? %>
+  <h3>Usuario encontrado: </h3>
+  <ul>
+    <ul>
+      <li>ID: <%= @requestedUser.id %></li>
+      <li>Nombre: <%= @requestedUser.name %></li> 
+      <li>Email: <%= @requestedUser.email %></li> 
+      <li>Identification<%= @requestedUser.identification %></li>
+    </ul>
+  </ul>
+<% end %>

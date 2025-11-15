@@ -1,0 +1,19 @@
+<%= form_with url: "/", method: :get, local: true do |f| %>
+  <%= hidden_field_tag :show_all, true %>
+  <div>
+    <%= f.submit "Obtener todos los clientes" %>
+  </div>
+<% end %>
+<% if defined?(@all_users) && @all_users.present? %>
+  <h3>Todos los usuarios</h3>
+  <ul>
+    <% @all_users.each do |user| %>
+      <ul>
+        <li>ID: <%= user.id %></li>
+        <li>Nombre: <%= user.name %></li> 
+        <li>Email: <%= user.email %></li> 
+        <li>Identification<%= user.identification %></li>
+      </ul>
+    <% end %>
+  </ul>
+<% end %>
