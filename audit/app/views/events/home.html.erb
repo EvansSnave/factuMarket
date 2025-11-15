@@ -1,0 +1,31 @@
+<h1>Historial de eventos</h1>
+
+<%= render "get_bill_events" %>
+
+<% if defined?(@events) && @events.present? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <ul>
+          <li>
+            <% if event.payload.present? %>
+              <p>Factura</p>
+              <p>ID: <%= event.payload[:id] %></p>
+              <p>ID del cliente: <%= event.payload[:user_id] %></p>
+              <p>Descripcion: <%= event.payload[:description] %></p>
+              <p>Cantidad: <%= event.payload[:amount] %></p>
+              <p>Producto: <%= event.payload[:product] %></p>
+              <p>Fecha: <%= event.payload[:date] %></p>
+            <% else %>
+              No hay informacion sobre la factura en este evento
+            <% end %>
+          </li>
+          <li>
+            <p>Description del evento: <%= event.description %></p>
+            <p>Tipo de evento: <%= event.type %></p>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
