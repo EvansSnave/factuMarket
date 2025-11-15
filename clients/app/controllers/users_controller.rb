@@ -9,6 +9,10 @@ class UsersController < ApplicationController
       @user = UserService.create_user(user_params)
     end
 
+    if params[:show_all].present?
+      @all_users = UserService.get_all_users
+    end
+
     if params[:search_id].present?
       @requestedUser = UserService.get_user_by_id(params[:search_id])
     end
@@ -17,12 +21,13 @@ class UsersController < ApplicationController
   # POST /clientes
   def create
     user = UserService.create_user(user_params)
-
     if user.persisted?
-      render json: { message: "Cliente creado", user: user }, status: :created
+      flash[:success] = "Usuario creado correctamente"
     else
-      render json: { errors: "Hubo un error al crear el cliente Error: #{user.errors.full_messages}" }, status: :unprocessable_entity
+      flash[:error] = user.errors.full_messages.join(", ")
     end
+
+    redirect_to :controller => "users", :action => "home"
   end
 
   def getAll

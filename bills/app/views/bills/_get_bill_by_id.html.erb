@@ -7,3 +7,17 @@
     <%= f.submit "Buscar factura" %>
   </div>
 <% end %>
+
+<% if defined?(@requestedBill) && @requestedBill.present? %>
+  <h3>Factura encontrada: </h3>
+  <ul>
+    <ul>
+      <li>ID: <%= @requestedBill.id %></li>
+      <li>ID cliente: <%= @requestedBill.user_id %></li> 
+      <li>Descripcion: <%= @requestedBill.description %></li> 
+      <li>Cantidad: <%= @requestedBill.amount %></li>
+      <li>Producto: <%= @requestedBill.product %></li>
+      <li>Fecha: <%= @requestedBill.bill_date %></li>
+    </ul>
+  </ul>
+<% end %>

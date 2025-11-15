@@ -18,6 +18,13 @@
     </li>
   <% end %>
 </ul>
-<%= render "create_user", user: @user %>
+<%= render "create_user", user: @user%>
+<% if flash[:success] %>
+  <div style="color: green; font-weight: bold;"><%= flash[:success] %></div>
+<% end %>
+
+<% if flash[:error] %>
+  <div style="color: red; font-weight: bold;"><%= flash[:error] %></div>
+<% end %>
 <%= render "get_all_users" %>
 <%= render "get_user_by_id" %>

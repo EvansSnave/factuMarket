@@ -31,11 +31,15 @@ class BillsController < ApplicationController
   def create 
     bill = BillsService.create_bill(bill_params)
 
-    if bill.save
-      render json: { message: "Factura creada", bill: bill }, status: :created
+    if !bill.present?
+      flash[:error] = "Error al crear factura, ID cliente es requerido"
+    elsif bill.persisted?
+      flash[:success] = "Factura creada correctamente"
     else
-      render json: { errors: bill.errors.full_messages }, status: :unprocessable_entity
+      flash[:error] = bill.errors.full_messages.join(", ")
     end
+
+    redirect_to :controller => "bills", :action => "home"
   end
 
   def getBill
