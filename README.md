@@ -209,10 +209,11 @@ bill: {
 ```
 Y se envia a ```http://[::1]:3001/auditoria``` Esta action creara y guardara este evento en la base de datos de MongoDB
 
-<img width="449" height="468" alt="image" src="https://github.com/user-attachments/assets/9b23d102-1295-4d18-aa78-8d063885821b" />
+<img width="817" height="825" alt="image" src="https://github.com/user-attachments/assets/f31c6c18-cc9a-47b5-a51f-f399d9a4225e" />
 
 ```
 GET /auditoria/:id
 ```
 Este endpoint devuelve una lista de todos los eventos relacionados a la factura con id=:id\
 De esta manera: ```http://[::1]:3001/auditoria/1``` nos dara como resultado todos los eventos relacionados a la factura con id=1\
+
