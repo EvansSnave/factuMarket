@@ -1,38 +1,38 @@
-<%= form_with url: "/facturas", method: :post, model: @bill, local: true do |f| %>
-  <div>
+<%= form_with url: "/facturas", method: :post, model: @bill, local: true, class: "form" do |f| %>
+
+  <div class="form-group">
     <%= f.label :user_id, "ID del usuario" %>
-    <%= f.number_field :user_id %>
+    <%= f.number_field :user_id, class: "input" %>
   </div>
 
-  <div>
-    <%= f.label :description, "Descripcion" %>
-    <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.label :description, "Descripción" %>
+    <%= f.text_field :description, class: "input" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :amount, "Cantidad" %>
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, class: "input" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :product, "Producto" %>
-    <%= f.text_field :product %>
+    <%= f.text_field :product, class: "input" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :bill_date, "Fecha" %>
-    <%= f.date_field :bill_date %>
+    <%= f.date_field :bill_date, class: "input" %>
   </div>
 
-  <div>
-    <%= f.submit "Crear factura" %>
-  </div>
+  <%= f.submit "Crear factura", class: "btn-primary" %>
+
 <% end %>
 
 <% if flash[:success] %>
-  <div style="color: green; font-weight: bold;"><%= flash[:success] %></div>
+  <div class="flash flash-success"><%= flash[:success] %></div>
 <% end %>
 
 <% if flash[:error] %>
-  <div style="color: red; font-weight: bold;"><%= flash[:error] %></div>
+  <div class="flash flash-error"><%= flash[:error] %></div>
 <% end %>

@@ -1,0 +1,121 @@
+/* Page layout */
+.page-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 10px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #2b4c7e;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.section-title {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+}
+
+.child {
+  width: 40%;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input {
+  width: 93%;
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+
+.btn,
+.btn-primary {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn {
+  background: #d4d4d4;
+}
+
+.btn-primary {
+  background: #2b4c7e;
+  color: white;
+}
+
+/* Layout */
+.two-columns {
+  display: flex;
+  gap: 20px;
+}
+
+/* Routes list */
+.routes-list {
+  list-style: none;
+  padding: 0;
+}
+
+.route-item {
+  background: #f6f8fa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Result lists */
+.result-box {
+  background: #eef5ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.result-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Flash messages */
+.flash {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.flash-success {
+  background: #e5ffe8;
+  color: #1a7f2e;
+}
+
+.flash-error {
+  background: #ffe5e5;
+  color: #a60000;
+}
+
+/* Schema block */
+.schema {
+  background: #1e1e1e;
+  color: #dcdcdc;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}

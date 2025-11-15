@@ -1,29 +1,30 @@
-<%= form_with url: "/", method: :get, local: true do |f| %>
-  <div>
+<%= form_with url: "/", method: :get, local: true, class: "form" do |f| %>
+  <div class="form-group">
     <%= f.label :fechaInicio, "Desde" %>
-    <%= f.date_field :fechaInicio %>
-  </div>
-  <div>
-    <%= f.label :fechaFin, "Hasta" %>
-    <%= f.date_field :fechaFin %>
+    <%= f.date_field :fechaInicio, class: "input" %>
   </div>
 
-  <div>
-    <%= f.submit "Buscar facturas" %>
+  <div class="form-group">
+    <%= f.label :fechaFin, "Hasta" %>
+    <%= f.date_field :fechaFin, class: "input" %>
   </div>
+
+  <%= f.submit "Buscar facturas", class: "btn-primary" %>
 <% end %>
+
 <% if defined?(@bills) && @bills.present? %>
-  <h3>Facturas: </h3>
-  <ul>
+  <div class="result-box">
+    <h3>Facturas encontradas</h3>
+
     <% @bills.each do |bill| %>
-      <ul>
-        <li>ID: <%= bill.id %></li>
-        <li>ID cliente: <%= bill.user_id %></li> 
-        <li>Descripcion: <%= bill.description %></li> 
-        <li>Cantidad: <%= bill.amount %></li>
-        <li>Producto: <%= bill.product %></li>
-        <li>Fecha: <%= bill.bill_date %></li>
-        </ul>
+      <ul class="result-list">
+        <li><strong>ID:</strong> <%= bill.id %></li>
+        <li><strong>ID cliente:</strong> <%= bill.user_id %></li>
+        <li><strong>Descripción:</strong> <%= bill.description %></li>
+        <li><strong>Cantidad:</strong> <%= bill.amount %></li>
+        <li><strong>Producto:</strong> <%= bill.product %></li>
+        <li><strong>Fecha:</strong> <%= bill.bill_date %></li>
+      </ul>
     <% end %>
-  </ul>
+  </div>
 <% end %>
