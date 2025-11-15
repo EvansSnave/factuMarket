@@ -12,20 +12,16 @@ class ClientsClient
     if response.is_a?(Net::HTTPSuccess)
       body = response.body
 
-      # Try to parse JSON, but if it's invalid, return nil (user not found)
       begin
         data = JSON.parse(body)
       rescue JSON::ParserError
         return nil
       end
 
-      # If parsed successfully but is not a Hash, treat as not found
       return nil unless data.is_a?(Hash)
 
-      # "error" key means user doesn't exist
       return nil if data["error"].present?
 
-      # empty hash "{}" means user not found
       return nil if data.empty?
 
       return data

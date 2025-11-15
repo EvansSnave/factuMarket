@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # POST /clientes
   def create
     user = UserService.create_user(user_params)
     if user.persisted?
