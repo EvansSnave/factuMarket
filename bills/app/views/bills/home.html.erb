@@ -1,15 +1,35 @@
-<h1>Gestion informacion de facturas</h1>
-<h2>Esquema de factura:</h2>
-<pre><code>
-  bill: {
-    user_id: integer,
-    description: string,
-    amount: integer,
-    product: string,
-    bill_date: string
-  }
-</code></pre>
+<div class="page-container">
 
-<%= render "get_bills_by_range" %>
-<%= render "create_bill", bill: @bill %>
-<%= render "get_bill_by_id" %>
+  <h1 class="page-title">Gestión de Información de Facturas</h1>
+
+  <section class="card">
+    <h2 class="section-title">Esquema de factura</h2>
+    <pre class="schema"><code>
+      bill: {
+        user_id: integer,
+        description: string,
+        amount: integer,
+        product: string,
+        bill_date: string
+      }
+    </code></pre>
+  </section>
+
+  <div class="two-columns">
+    <section class="card child">
+      <h2 class="section-title">Buscar facturas por rango</h2>
+      <%= render "get_bills_by_range" %>
+    </section>
+
+    <section class="card child">
+      <h2 class="section-title">Crear factura</h2>
+      <%= render "create_bill", bill: @bill %>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2 class="section-title">Buscar factura por ID</h2>
+    <%= render "get_bill_by_id" %>
+  </section>
+
+</div>

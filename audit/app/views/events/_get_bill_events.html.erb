@@ -1,9 +1,12 @@
-<%= form_with url: "/", method: :get, local: true do |f| %>
-  <div>
-    <%= f.label :search_id, "ID de la factura" %>
-    <%= f.number_field :search_id %>
-  </div>
-  <div>
-    <%= f.submit "Buscar eventos" %>
-  </div>
-<% end %>
+<div class="form-card">
+  <h2 class="form-title">Buscar eventos por factura</h2>
+
+  <%= form_with url: "/", method: :get, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :search_id, "ID de la factura", class: "form-label" %>
+      <%= f.number_field :search_id, class: "form-input" %>
+    </div>
+
+    <%= f.submit "Buscar eventos", class: "form-submit" %>
+  <% end %>
+</div>
