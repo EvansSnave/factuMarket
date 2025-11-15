@@ -1,6 +1,6 @@
 default: &default
   adapter: oracle_enhanced
-  username: system
+  username: C##free_dev
   password: 122
   host: localhost
   port: 1521
@@ -11,6 +11,7 @@ development:
 
 test:
   <<: *default
+  username: C##free_test
 
 production:
   <<: *default
