@@ -1,31 +1,36 @@
-<h1>Historial de eventos</h1>
+<h1 class="page-title">Historial de eventos</h1>
 
-<%= render "get_bill_events" %>
+<div class="section-card">
+  <%= render "get_bill_events" %>
+</div>
 
 <% if defined?(@events) && @events.present? %>
-  <ul>
+  <div class="events-container">
     <% @events.each do |event| %>
-      <li>
-        <ul>
-          <li>
-            <% if event.payload.present? %>
-              <p>Factura</p>
-              <p>ID: <%= event.payload[:id] %></p>
-              <p>ID del cliente: <%= event.payload[:user_id] %></p>
-              <p>Descripcion: <%= event.payload[:description] %></p>
-              <p>Cantidad: <%= event.payload[:amount] %></p>
-              <p>Producto: <%= event.payload[:product] %></p>
-              <p>Fecha: <%= event.payload[:date] %></p>
-            <% else %>
-              No hay informacion sobre la factura en este evento
-            <% end %>
-          </li>
-          <li>
-            <p>Description del evento: <%= event.description %></p>
-            <p>Tipo de evento: <%= event.type %></p>
-          </li>
-        </ul>
-      </li>
+      <div class="event-card">
+        
+        <div class="event-section">
+          <% if event.payload.present? %>
+            <h3 class="event-subtitle">Factura</h3>
+
+            <p><strong>ID:</strong> <%= event.payload[:id] %></p>
+            <p><strong>ID del cliente:</strong> <%= event.payload[:user_id] %></p>
+            <p><strong>Descripcion:</strong> <%= event.payload[:description] %></p>
+            <p><strong>Cantidad:</strong> <%= event.payload[:amount] %></p>
+            <p><strong>Producto:</strong> <%= event.payload[:product] %></p>
+            <p><strong>Fecha:</strong> <%= event.payload[:date] %></p>
+          <% else %>
+            <p class="no-info">No hay informacion sobre la factura en este evento</p>
+          <% end %>
+        </div>
+
+        <div class="event-section">
+          <h3 class="event-subtitle">Detalles del evento</h3>
+          <p><strong>Descripción:</strong> <%= event.description %></p>
+          <p><strong>Tipo:</strong> <%= event.type %></p>
+        </div>
+
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>
