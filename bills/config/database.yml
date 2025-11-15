@@ -11,6 +11,7 @@ development:
 
 test:
   <<: *default
+  username: C##free_test
 
 production:
   <<: *default
