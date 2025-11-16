@@ -24,7 +24,9 @@ class BillsService
       type: "PETICION_FACTURA",
       entity_id: 0,
       description: "Se enviaron todas las facturas entre #{start_date} y #{end_date}",
-      payload: bills.as_json
+      payload: {
+        count: bills.count
+      }
     )
 
     bills
