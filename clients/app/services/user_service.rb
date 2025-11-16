@@ -26,7 +26,9 @@ class UserService
       type: "PETICION_CLIENTE",
       entity_id: 0,
       description: "Se enviaron todos los clientes",
-      payload: User.all.as_json
+      payload: {
+        count: User.count
+      }
     )
 
     User.all
